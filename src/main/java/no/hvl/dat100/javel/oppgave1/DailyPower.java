@@ -5,14 +5,18 @@ public class DailyPower {
     // a) print power prices during a day
     public static void printPowerPrices(double[] prices) {
 
-        // TODO
+        for(int i = 0; i < prices.length; i++){
+            System.out.println(prices[i]);
+        }
 
     }
 
     // b) print power usage during a day
     public static void printPowerUsage(double[] usage) {
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            System.out.println(usage[i]);
+        }
 
     }
 
@@ -21,7 +25,9 @@ public class DailyPower {
 
         double sum = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            sum += usage[i];
+        }
 
         return sum;
     }
@@ -29,9 +35,15 @@ public class DailyPower {
     // d) compute spot price for a single day
     public static double computeSpotPrice(double[] usage, double[] prices) {
 
-        double price = 0;
+        double totUsage = 0.0;
+        double totCost = 0.0;
 
-        // TODO
+        for(int i = 0; i < prices.length; i++){
+            totCost += prices[i] * usage[i];
+            totUsage += usage[i];
+        }
+
+        double price = totCost/totUsage;
 
         return price;
     }
@@ -40,11 +52,14 @@ public class DailyPower {
     private static final double THRESHOLD = 0.9375;
     private static final double PERCENTAGE = 0.9;
 
-    private static double getSupport(double usage, double price) {
+    public static double getSupport(double usage, double price) {
 
         double support = 0;
 
-        // TODO
+        if(price > THRESHOLD){
+            double supportPrice = price - THRESHOLD;
+            support = supportPrice * usage * PERCENTAGE;
+        }
 
         return support;
     }
@@ -53,8 +68,13 @@ public class DailyPower {
     public static double computePowerSupport(double[] usage, double[] prices) {
 
         double support = 0;
-
-        // TODO
+        
+        for(int i = 0; i < usage.length; i++){
+            if(prices[i] > THRESHOLD){
+                double supportPrice = prices[i] - THRESHOLD;
+                support += supportPrice * usage[i] * PERCENTAGE;
+            }
+        }
 
         return support;
     }
@@ -66,7 +86,9 @@ public class DailyPower {
 
         double price = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            price += NORGESPRIS_KWH * usage[i];
+        }
 
         return price;
     }
@@ -76,7 +98,11 @@ public class DailyPower {
 
         double temp_max = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            if(temp_max < usage[i]){
+                temp_max = usage[i];
+            }
+        }
 
         return temp_max;
     }
@@ -85,7 +111,11 @@ public class DailyPower {
 
         double average = 0;
 
-        // TODO
+        for(int i = 0; i < usage.length; i++){
+            average += usage[i];
+        }
+
+        average = average/usage.length;
 
         return average;
     }

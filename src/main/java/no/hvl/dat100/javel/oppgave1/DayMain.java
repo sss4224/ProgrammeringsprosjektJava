@@ -1,7 +1,5 @@
 package no.hvl.dat100.javel.oppgave1;
 
-import no.hvl.dat100.javel.oppgave2.MonthlyPower;
-
 public class DayMain {
 
     public static void main(String[] args) {
@@ -16,13 +14,43 @@ public class DayMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
+        System.out.println("a)");
+        DailyPower.printPowerPrices(powerprices_day);
+        System.out.println("");
 
-         Write code that tests the methods you implement in the DailyPower class
-         Remember to teste the methods as you implement them
-         Remember to also to check that you get the expected results
-         */
+        System.out.println("b)");
+        DailyPower.printPowerUsage(powerusage_day);
+        System.out.println("");
 
+        System.out.println("c)");
+        System.out.println(DailyPower.computePowerUsage(powerusage_day));
+        System.out.println("");
+
+        System.out.println("d)");
+        System.out.printf("%.2f%n",DailyPower.computeSpotPrice(powerusage_day, powerprices_day));
+        System.out.println("");
+        
+        System.out.println("e)");
+        for(int i = 0; i < DayPowerData.powerprices_day.length; i++){
+            System.out.print(i+1 + " ");
+            System.out.println(DailyPower.getSupport(powerusage_day[i], powerprices_day[i]));
+        }
+        System.out.println("");
+
+        System.out.println("f)");
+        System.out.printf("%.2f%n" ,DailyPower.computePowerSupport(powerusage_day, powerprices_day));
+        System.out.println("");
+
+        System.out.println("g)");
+        System.out.println(DailyPower.computeNorgesPrice(powerusage_day));
+        System.out.println("");
+
+        System.out.println("g)");
+        System.out.println(DailyPower.findPeakUsage(powerusage_day));
+        System.out.println("");
+
+        System.out.println("g)");
+        System.out.printf("%.2f%n" ,DailyPower.findAvgPower(powerusage_day));
+        System.out.println("");
     }
 }
