@@ -42,7 +42,7 @@ public class MonthMain {
         System.out.printf("%.2f\n" ,MonthlyPower.computePowerSupport(power_usage_month, power_prices_month));
         System.out.println("");
 
-                System.out.println("Oppgave g)");
+        System.out.println("Oppgave g)");
         System.out.printf("%.2f\n" ,MonthlyPower.computeNorgesPrice(power_usage_month));
         System.out.println("");
     }
